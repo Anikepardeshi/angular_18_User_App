@@ -1,0 +1,96 @@
+<section class="vh-100 d-flex align-items-center justify-content-center mt-3">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="card shadow-sm p-4">
+          <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+            <h3 class="fw-bold text-center mb-3">Add User</h3>
+
+            <!-- Full Name -->
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                formControlName="fullName"
+                class="form-control"
+                placeholder="Enter Full Name"
+              />
+              <div *ngIf="addUserForm.get('fullName')?.touched && addUserForm.get('fullName')?.invalid" class="text-danger">
+                <small *ngIf="addUserForm.get('fullName')?.hasError('required')">Full Name is required.</small>
+              </div>
+            </div>
+
+            <!-- Email ID -->
+            <div class="mb-3">
+              <label for="emailId" class="form-label">Email ID</label>
+              <input
+                type="email"
+                id="emailId"
+                formControlName="emailId"
+                class="form-control"
+                placeholder="Enter Email ID"
+              />
+              <div *ngIf="addUserForm.get('emailId')?.touched && addUserForm.get('emailId')?.invalid" class="text-danger">
+                <small *ngIf="addUserForm.get('emailId')?.hasError('required')">Email ID is required.</small>
+                <small *ngIf="addUserForm.get('emailId')?.hasError('email')">Please enter a valid email address.</small>
+              </div>
+            </div>
+
+            <!-- User Name -->
+            <div class="mb-3">
+              <label for="userName" class="form-label">User Name</label>
+              <input
+                type="text"
+                id="userName"
+                formControlName="userName"
+                class="form-control"
+                placeholder="Enter User Name"
+              />
+              <div *ngIf="addUserForm.get('userName')?.touched && addUserForm.get('userName')?.invalid" class="text-danger">
+                <small *ngIf="addUserForm.get('userName')?.hasError('required')">User Name is required.</small>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Enter Password"
+              />
+              <div *ngIf="addUserForm.get('password')?.touched && addUserForm.get('password')?.invalid" class="text-danger">
+                <small *ngIf="addUserForm.get('password')?.hasError('required')">Password is required.</small>
+                <small *ngIf="addUserForm.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</small>
+              </div>
+            </div>
+
+            <!-- Project Name -->
+            <!-- <div class="mb-3">
+              <label for="projectName" class="form-label">Project Name</label>
+              <input
+                type="text"
+                id="projectName"
+                formControlName="projectName"
+                class="form-control"
+                placeholder="Enter Project Name"
+              />
+            </div> -->
+
+            <!-- Add User Button -->
+            <div class="d-grid col-3 mt-3">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="addUserForm.invalid">
+                Add User
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<router-outlet></router-outlet>
